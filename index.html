@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博大仙的后花园 | 婚礼摄影审美日报</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #8b7765;
+            --dark: #3d3229;
+            --mid: #5a4d3f;
+            --light: #f5f0e8;
+            --bg: #faf8f5;
+            --border: #d4c5b5;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: rgba(255,255,255,0.05);
+            transform: rotate(15deg);
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .header .tagline {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            letter-spacing: 0.2em;
+        }
+
+        .header .date {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Nav */
+        .nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: var(--mid);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title .num {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            object-fit: cover;
+            max-height: 300px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--mid);
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            border-radius: 4px;
+        }
+
+        /* Quote */
+        .quote {
+            border-left: 3px solid var(--primary);
+            padding: 1rem 1.2rem;
+            background: var(--light);
+            font-style: italic;
+            color: var(--mid);
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Highlight box */
+        .highlight {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .highlight-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+        }
+
+        thead {
+            border-top: 2px solid var(--dark);
+            border-bottom: 1px solid var(--dark);
+        }
+
+        tbody {
+            border-bottom: 2px solid var(--dark);
+        }
+
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* List */
+        ul, ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        li {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #999;
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.5rem; }
+            .section-title { font-size: 1.2rem; }
+            .nav { gap: 0.5rem; }
+            .nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; }
+        }
+
+        /* Image grid */
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .img-grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .img-grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .img-grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .img-grid-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem 0.8rem 0.5rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>博大仙的后花园</h1>
+        <p class="tagline">婚礼摄影审美日报</p>
+        <p class="date">2026年6月12日 · 第1期</p>
+    </header>
+
+    <nav class="nav">
+        <a href="#profile" class="active">审美画像</a>
+        <a href="#trends">今日热点</a>
+        <a href="#niche">小众胶片</a>
+        <a href="#plan">学习计划</a>
+        <a href="#links">参考链接</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- Section 1: Profile -->
+        <section class="section" id="profile">
+            <h2 class="section-title"><span class="num">1</span>你的审美画像</h2>
+
+            <div class="quote">
+                你的用户名：博大仙 / qq635887006<br>
+                关注结构：6个关注中有4个是花艺相关<br>
+                正在浏览：sashevents 的工业风场地（波纹铁皮 + 白色纱幔 + 水晶灯）
+            </div>
+
+            <p>你刷 Instagram 时，眼睛先看的是"这个场景里有什么"，而不是"这个照片怎么拍的"。你的注意力先落在布置、花艺、空间氛围上。</p>
+
+            <div class="highlight">
+                <div class="highlight-title">审美关键词</div>
+                <table>
+                    <thead>
+                        <tr><th>关键词</th><th>解释</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>花艺驱动</td><td>花不是点缀，是画面主角</td></tr>
+                        <tr><td>空间叙事</td><td>大景、建筑、环境比人物更吸引你</td></tr>
+                        <tr><td>工业风混搭</td><td>冷硬材质 + 柔软花艺的碰撞</td></tr>
+                        <tr><td>不甜不腻</td><td>不走韩系小清新，带点骨骼感</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight">
+                <div class="highlight-title">风格定位建议</div>
+                <p><strong>1. 日本花艺主导的婚礼摄影</strong>——花艺不是点缀，是画面主体。</p>
+                <p><strong>2. 欧洲庄园空间叙事</strong>——大景、自然光、建筑感。</p>
+                <p><strong>3. 国内暗调 + 花艺</strong>——深色路线，不是只有粉色。</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Trends -->
+        <section class="section" id="trends">
+            <h2 class="section-title"><span class="num">2</span>今日热点简报</h2>
+
+            <div class="img-grid">
+                <div class="img-grid-item">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop" alt="松弛感婚礼">
+                    <div class="img-grid-label">松弛感婚礼</div>
+                </div>
+                <div class="img-grid-item">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop" alt="胶片婚礼">
+                    <div class="img-grid-label">胶片婚礼</div>
+                </div>
+                <div class="img-grid-item">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=300&fit=crop" alt="复古港风">
+                    <div class="img-grid-label">复古港风</div>
+                </div>
+                <div class="img-grid-item">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=300&fit=crop" alt="暗调婚礼">
+                    <div class="img-grid-label">暗调婚礼</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">松弛感婚礼</div>
+                <div class="card-meta">爆款：淄博婚礼跟拍｜无比松弛的一个早上</div>
+                <p>为什么火：真实感 + 情绪共鸣。不是"拍得美"，是"看得舒服"。</p>
+                <div class="tags">
+                    <span class="tag">#松弛感</span>
+                    <span class="tag">#不摆拍</span>
+                </div>
+                <a class="card-link" href="https://www.xiaohongshu.com/search_result?keyword=松弛感婚礼" target="_blank">查看小红书相关内容 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">胶片婚礼</div>
+                <div class="card-meta">数据：微博"胶片婚礼"超话阅读 532.5 万</div>
+                <p>为什么火：数码时代的"稀缺性"——胶片不可修改、不可预览，每一张都是冒险。</p>
+                <div class="tags">
+                    <span class="tag">#胶片</span>
+                    <span class="tag">#Kodak Portra</span>
+                </div>
+                <a class="card-link" href="https://www.xiaohongshu.com/search_result?keyword=胶片婚礼" target="_blank">查看小红书相关内容 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">复古港风</div>
+                <div class="card-meta">特征：90年代旗袍喜嫁风、王家卫式美学</div>
+                <p>为什么火：怀旧情绪 + 文化认同。年轻一代对"父母辈婚礼"的重新演绎。</p>
+                <div class="tags">
+                    <span class="tag">#复古港风</span>
+                    <span class="tag">#旗袍</span>
+                </div>
+                <a class="card-link" href="https://www.xiaohongshu.com/search_result?keyword=复古港风婚礼" target="_blank">查看小红书相关内容 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">暗调婚礼</div>
+                <div class="card-meta">趋势：Dark & Moody Wedding Photography</div>
+                <p>为什么高级：不是所有人都敢让婚礼暗下来。暗调制造了一种"无法被模仿"的氛围。</p>
+                <div class="tags">
+                    <span class="tag">#暗调</span>
+                    <span class="tag">#电影感</span>
+                </div>
+                <a class="card-link" href="https://www.pinterest.com/search/pins/?q=dark+moody+wedding+photography" target="_blank">查看 Pinterest 相关内容 →</a>
+            </div>
+        </section>
+
+        <!-- Section 3: Niche -->
+        <section class="section" id="niche">
+            <h2 class="section-title"><span class="num">3</span>小众胶片方向</h2>
+
+            <div class="quote">
+                暗调婚礼摄影是光与阴影的权力游戏。画面以深灰、墨绿、暗红为基底，光线像手术刀一样精准切割，只照亮需要被看见的部分。
+            </div>
+
+            <div class="highlight">
+                <div class="highlight-title">全球摄影师参考</div>
+                <table>
+                    <thead>
+                        <tr><th>摄影师</th><th>地区</th><th>风格</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="https://www.instagram.com/youngho_gogo/" target="_blank">youngho_gogo</a></td><td>韩国</td><td>胶片、东亚审美、自然光</td></tr>
+                        <tr><td>youngwoon</td><td>韩国</td><td>B站600万播放关联、韩系胶片</td></tr>
+                        <tr><td>Martin Lui</td><td>香港</td><td>暗调、电影感、城市婚礼</td></tr>
+                        <tr><td>Toneeace</td><td>澳洲</td><td>Dark & Moody、自然婚礼</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight">
+                <div class="highlight-title">实验性方向</div>
+                <p><strong>雨夜婚礼：</strong>利用城市灯光反射，制造霓虹色调。</p>
+                <p><strong>黑白婚礼：</strong>完全去色，只用影调说话。</p>
+                <p><strong>双重曝光：</strong>胶片时代的技术，在数码时代复活。</p>
+            </div>
+        </section>
+
+        <!-- Section 4: Plan -->
+        <section class="section" id="plan">
+            <h2 class="section-title"><span class="num">4</span>明日学习计划</h2>
+            <p>主题：松弛感婚礼的自然光叙事</p>
+
+            <div class="card">
+                <div class="card-title">模块一：审美观察（30分钟）</div>
+                <p>任务：浏览 10 张松弛感婚礼照片，记录每张的「光线来源」和「情绪氛围」。</p>
+                <a class="card-link" href="https://www.pinterest.com/search/pins/?q=natural+light+wedding+photography" target="_blank">Pinterest 参考 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">模块二：技术拆解（45分钟）</div>
+                <p>任务：学习 3 种自然光婚礼布光方案（侧光、逆光、窗光）。</p>
+                <a class="card-link" href="https://www.youtube.com/results?search_query=natural+light+wedding+photography+tutorial" target="_blank">YouTube 教程 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">模块三：风格研究（30分钟）</div>
+                <p>任务：对比 2 位自然光婚礼摄影师的作品，找出共同点和差异。</p>
+                <a class="card-link" href="https://www.instagram.com/explore/tags/naturallightwedding/" target="_blank">Instagram 标签 →</a>
+            </div>
+
+            <div class="card">
+                <div class="card-title">模块四：小红书运营（15分钟）</div>
+                <p>任务：写一条小红书标题，用今日学到的自然光概念。</p>
+                <p>公式：数字 + 情绪词 + 场景词</p>
+            </div>
+
+            <div class="quote">
+                <strong>晚上8点检查清单：</strong>今天看了吗？有收获吗？标题写出来了吗？<br>
+                打卡方式：群里直接回复"看了" + 一句话收获。
+            </div>
+        </section>
+
+        <!-- Section 5: Links -->
+        <section class="section" id="links">
+            <h2 class="section-title"><span class="num">5</span>参考链接合集</h2>
+
+            <div class="highlight">
+                <div class="highlight-title">平台搜索</div>
+                <ul>
+                    <li><a href="https://www.xiaohongshu.com/search_result?keyword=婚礼摄影" target="_blank">小红书 - 婚礼摄影</a></li>
+                    <li><a href="https://www.pinterest.com/search/pins/?q=wedding+photography" target="_blank">Pinterest - Wedding Photography</a></li>
+                    <li><a href="https://www.instagram.com/explore/tags/weddingphotography/" target="_blank">Instagram - #weddingphotography</a></li>
+                    <li><a href="https://www.douyin.com/search/婚礼摄影" target="_blank">抖音 - 婚礼摄影</a></li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <div class="highlight-title">风格细分</div>
+                <ul>
+                    <li><a href="https://www.xiaohongshu.com/search_result?keyword=胶片婚礼" target="_blank">小红书 - 胶片婚礼</a></li>
+                    <li><a href="https://www.xiaohongshu.com/search_result?keyword=松弛感婚礼" target="_blank">小红书 - 松弛感婚礼</a></li>
+                    <li><a href="https://www.xiaohongshu.com/search_result?keyword=复古港风婚礼" target="_blank">小红书 - 复古港风婚礼</a></li>
+                    <li><a href="https://www.pinterest.com/search/pins/?q=dark+moody+wedding+photography" target="_blank">Pinterest - Dark & Moody</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <p>海龙大家族出品 · 博哥专属</p>
+        <p>每日更新 · 审美提升 · 热点追踪</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
